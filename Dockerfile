@@ -1,10 +1,19 @@
 FROM python:3.7.3-stretch
 
 ## Step 1:
-# Create a working directory
+WORKDIR /app
 
 ## Step 2:
-# Copy source code to working directory
+COPY requirements.txt requirements.txt
+
+RUN pip3 install -r requirements.txt
+
+COPY . .
+
+EXPOSE 80
+
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+
 
 ## Step 3:
 # Install packages from requirements.txt
